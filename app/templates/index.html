@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Arbitrage MCP</title>
+    <link rel="stylesheet" href="/static/style.css">
+    
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js" defer></script>
+</head>
+<body>
+
+    <!-- Authentication Container -->
+    <div id="auth-container">
+        <h2>MCP Server Access</h2>
+        <p>Login or create an account to begin.</p>
+        <form id="login-form">
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Sign Up / Login with Email</button>
+        </form>
+        <button id="google-login-button">Login with Google</button>
+        <p id="auth-error" class="error-message"></p>
+    </div>
+
+    <!-- Main Dashboard Container -->
+    <div id="dashboard-container" class="hidden">
+        <header class="dashboard-header">
+            <h1 id="welcome-message">Welcome, Developer</h1>
+            <button id="logout-button">Logout</button>
+        </header>
+
+        <main>
+            <!-- User Settings -->
+            <section id="user-settings">
+                <h2>Settings</h2>
+                <form id="settings-form">
+                    <input type="text" id="netlify-api-key" placeholder="Enter Your Netlify API Key" required>
+                    <button type="submit">Save Settings</button>
+                </form>
+                <p id="settings-status"></p>
+            </section>
+
+            <!-- Market Opportunity Finder -->
+            <section id="opportunity-finder">
+                <h2>1. Find a Digital Desert</h2>
+                <form id="analysis-form">
+                    <input type="text" id="niche" placeholder="Enter Niche (e.g., 'Roofer')" required>
+                    <input type="text" id="location" placeholder="Enter Location (e.g., 'Portland, OR')" required>
+                    <button type="submit">Analyze Opportunity</button>
+                </form>
+                <div id="results-container">
+                    <p>Analysis results will appear here.</p>
+                </div>
+            </section>
+
+            <!-- Asset Management Dashboard -->
+            <section id="asset-dashboard">
+                <h2>2. My Deployed Assets</h2>
+                <div id="asset-status" class="status-box">
+                    <!-- Status messages for generation/deployment will appear here -->
+                </div>
+                <ul id="asset-list" class="site-list">
+                    <!-- List of deployed sites will be dynamically inserted here -->
+                </ul>
+            </section>
+        </main>
+    </div>
+
+    <!-- Content Editor Modal -->
+    <div id="editor-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h2>Review & Edit Content</h2>
+            <p>Make any desired changes to the AI-generated content before deploying.</p>
+            <div id="editor-tabs" class="tab-container">
+                <!-- Tabs will be dynamically generated here -->
+            </div>
+            <textarea id="content-editor-textarea" rows="20"></textarea>
+            <div class="modal-actions">
+                <button id="finalize-deploy-btn">Finalize & Deploy</button>
+                <button id="cancel-edit-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/script.js" defer></script>
+</body>
+</html>
